@@ -2,41 +2,39 @@
 
 **Autora**: Laura González Pizarro  
 **Fecha**: Noviembre 2024  
+**Nota**: 9.4/10
 
 ## Descripción
-
-Este proyecto aborda la optimización de tareas en una fábrica mediante algoritmos de búsqueda y heurísticas. El problema consiste en asignar eficientemente un conjunto de tareas de distintos tipos (a, b, c o d) a máquinas especializadas para minimizar el tiempo total de realización. Este tipo de problema es común en sistemas de producción y planificación, donde se busca la asignación óptima de recursos.
+Una fábrica recibe todas las mañanas un pedido con las tareas que debe realizar durante el día. Cada una de las tareas pertenece a uno, y sólo uno de
+los tipos a, b, c o d, y se sabe el tiempo exacto de procesamiento requerido para su realización. Para ello, la fçabrica dispone de una cantidad arbitraria
+de máquinas dispuestas en paralelo, una o más de cada uno de los tipos indicados, de modo que cada máquina sólo puede realizar tareas de su tipo.
+Se desea determinar el orden y asignación de tareas a máquinas de tal modo que el tiempo total de realización de todas las tareas sea el mínimo.
 
 ## Estructura del Proyecto
 
-1. **Problema**
-   - La fábrica recibe un conjunto de tareas a realizar diariamente, donde cada tarea tiene un tipo específico y tiempo de procesamiento asociado.
-   - El objetivo es asignar estas tareas a las máquinas disponibles, minimizando el tiempo total de ejecución.
-
-2. **Espacio de Estados**
+1. **Espacio de Estados**
    - Representa las configuraciones de las máquinas y el estado de la demanda de tareas.
    - La asignación de tareas es la única acción permitida.
    - El coste de la asignación depende del tiempo máximo que toma una máquina para completar todas sus tareas.
 
-3. **Heurísticas**
-   - Se definen varias heurísticas para guiar la búsqueda, incluyendo una heurística informada que estima el tiempo necesario en función de la capacidad de procesamiento de cada grupo de máquinas.
+2. **Heurísticas**
+   - Se definen varias heurísticas para guiar la búsqueda que estima el tiempo necesario en función de la capacidad de procesamiento de cada grupo de máquinas. Se realiza una comparación entre ellas para identificar cuál es más informada, es decir, que expande menos nodos para encontrar la solución optima.
+
+3. **Experimentos realizados**
 
 ## Implementación
 
-El proyecto está desarrollado en Python e incluye clases y funciones para representar el problema, las máquinas, y los estados de la fábrica. Los algoritmos de búsqueda implementados incluyen:
+El proyecto está desarrollado en Python con un diseño de programación orientada a objetos donde las tareas, maquinas, fabrica y demanda son represnetada por clases que tienen funciones para la resolución del problema. Los algoritmos de búsqueda implementados incluyen:
 
-- **Fuerza Bruta**: Evalúa todas las posibles asignaciones, resultando inviable para grandes volúmenes de tareas.
+- **Fuerza Bruta**: Evalúa todas las posibles asignaciones de las tareas en las máquinas.
 - **A\***: Un algoritmo de búsqueda heurística que prioriza los estados de menor coste estimado.
 - **Weighted A\***: Variante de A* que permite ajustar la importancia de la heurística, acelerando la búsqueda a cambio de una solución potencialmente subóptima.
-- **Monte Carlo**: Algoritmo de asignación aleatoria eficiente para grandes volúmenes de tareas, aunque menos preciso en escenarios con tiempos variados.
+- **Monte Carlo**: Algoritmo de asignación aleatoria de las tareas a las máquinas.
 
 ## Experimentos
+Se realizaron experimentos para validar la eficiencia de las heurísticas y la precisión de los algoritmos. Los análisis incluyeron:
 
-Se realizaron experimentos para evaluar el rendimiento de los algoritmos, comparando el tiempo de ejecución y el número de nodos expandidos con diferentes volúmenes de tareas y máquinas.
+1. **Comparación de Heurísticas**: Se evaluó qué heurística era más informada y reducía mejor el tiempo de ejecución.
+2. **Parámetros de Weighted A\***: Se analizó el parámetro de peso para obtener el mejor compromiso entre nodos expandidos y error cometido.
+3. **Rendimiento de los Algoritmos**: Se compararon el tiempo de ejecución y el número de nodos expandidos de cada algoritmo, variando el volumen de tareas y máquinas.
 
-## Conclusiones
-
-- La elección de una heurística informada y estructuras de datos adecuadas mejora significativamente el rendimiento.
-- El algoritmo A* con la heurística h1 resultó ser el más eficiente para resolver el problema de forma óptima.
-- Weighted A* ofrece un balance útil entre precisión y velocidad.
-- La implementación en un entorno distribuido o concurrente podría mejorar el rendimiento en aplicaciones a gran escala.
