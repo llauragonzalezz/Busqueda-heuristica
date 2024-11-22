@@ -6,7 +6,7 @@
 
 ## Descripción
 Una fábrica recibe todas las mañanas un pedido con las tareas que debe realizar durante el día. Cada una de las tareas pertenece a uno, y sólo uno de
-los tipos a, b, c o d, y se sabe el tiempo exacto de procesamiento requerido para su realización. Para ello, la fçabrica dispone de una cantidad arbitraria
+los tipos a, b, c o d, y se sabe el tiempo exacto de procesamiento requerido para su realización. Para ello, la fábrica dispone de una cantidad arbitraria
 de máquinas dispuestas en paralelo, una o más de cada uno de los tipos indicados, de modo que cada máquina sólo puede realizar tareas de su tipo.
 Se desea determinar el orden y asignación de tareas a máquinas de tal modo que el tiempo total de realización de todas las tareas sea el mínimo.
 
